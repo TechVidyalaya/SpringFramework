@@ -1,66 +1,68 @@
 ---
 course: Industry Ready Java Developer
-module: Module 2 - Spring Core (IoC, Dependency Injection & Bean Management)
+module: Module 3 - Spring Boot Fundamentals & Internal Architecture
 version: 1.0
 author: TechVidyalaya
 difficulty: Intermediate
-estimated_duration: 25-35 Hours
+estimated_duration: 30-40 Hours
 prerequisites:
-  - Java Programming
-  - Object-Oriented Programming
-  - Maven Basics
   - Module 1 - Introduction to Spring Framework
+  - Module 2 - Spring Core (IoC, Dependency Injection & Bean Management)
 ---
 
-# Module 2
-# Spring Core (IoC, Dependency Injection & Bean Management)
+# Module 3
+# Spring Boot Fundamentals & Internal Architecture
 
-> **"Spring Core is the heart of the Spring Framework. Everything else in Spring—Spring Boot, Spring MVC, Spring Security, Spring Data JPA, Spring AI, and Spring Cloud—is built on top of the concepts you'll learn in this module."**
+> **"Spring Boot doesn't replace Spring—it automates everything you learned in Spring Core."**
 
 ---
 
 # Welcome
 
-Congratulations on completing Module 1!
+Congratulations!
 
-You now understand:
+You have completed **Spring Core**, which means you already understand:
 
-- Why Spring was created
-- Enterprise Java problems
-- Spring ecosystem
-- Spring architecture
-- Project setup
+- The IoC Container
+- Dependency Injection
+- Bean Lifecycle
+- Bean Scopes
+- Component Scanning
+- Java Configuration
+- Spring Profiles
 
-In this module, you'll finally learn **how Spring actually works internally**.
+At this point, you know **how Spring works**.
 
-This is the most important module of the entire Spring course because it builds the mental model required to understand every other Spring technology.
+Now it's time to learn **how Spring Boot builds an entire Spring application with almost no configuration.**
+
+This module removes the mystery behind Spring Boot.
+
+Instead of treating it as "magic," you'll understand every important step happening internally.
 
 ---
 
 # Why This Module Matters
 
-Imagine building an enterprise application.
+Before Spring Boot, building an enterprise application required enormous amounts of configuration.
 
-Instead of manually creating every object:
+Developers had to configure:
 
-```java
-StudentRepository repository =
-        new StudentRepository();
+- XML files
+- DispatcherServlet
+- Tomcat
+- Logging
+- DataSources
+- Hibernate
+- Jackson
+- Bean Scanning
+- Property Files
+- Build Configuration
 
-StudentService service =
-        new StudentService(repository);
+A simple web application often required dozens of configuration files before writing business logic.
 
-StudentController controller =
-        new StudentController(service);
-```
+Spring Boot changed that forever.
 
-Spring does all of this automatically.
-
-But...
-
-How?
-
-This module answers that question.
+Instead of configuring infrastructure manually, developers focus on solving business problems while Spring Boot handles the repetitive setup.
 
 ---
 
@@ -68,153 +70,160 @@ This module answers that question.
 
 By the end of this module, you'll understand:
 
-- What the Spring IoC Container is
-- How Spring discovers classes
-- How beans are created
-- How dependencies are injected
-- How object lifecycles work
-- How bean scopes work
-- How configuration classes work
-- How environments and profiles work
+- What Spring Boot really is
+- Why Spring Boot was created
+- Spring Boot Architecture
+- Auto Configuration
+- Starter Dependencies
+- Embedded Web Servers
+- SpringApplication
+- Configuration Files
+- Logging
+- Profiles in Spring Boot
+- Production Features
+- Spring Boot Internals
 
 Most importantly...
 
-You'll understand **what happens internally after calling:**
+You'll understand exactly what happens after executing:
 
 ```java
-SpringApplication.run(...)
+SpringApplication.run(StudentApplication.class, args);
 ```
 
 ---
 
 # Learning Philosophy
 
-This module is intentionally different from most online tutorials.
+This module is intentionally different from most Spring Boot tutorials.
 
-Instead of teaching only annotations, you'll learn:
+Most courses teach students to memorize annotations.
 
-- Why the feature exists
-- What problem it solves
-- How Spring implements it internally
-- How memory changes
-- How execution flows
-- Where it is used in real projects
-- Common production mistakes
-- Debugging strategies
-- Interview expectations
+This course teaches you to understand the framework.
 
-The goal is to help you think like a Spring Framework engineer—not just a Spring user.
+Every chapter answers five important questions:
+
+1. What problem does this feature solve?
+2. Why was it introduced?
+3. How does Spring Boot implement it?
+4. What happens internally?
+5. How is it used in production?
+
+Our goal is not just to teach Spring Boot.
+
+Our goal is to help you think like the engineers who designed Spring Boot.
 
 ---
 
 # Running Project
 
-Throughout this module, we will build a single running example.
+We continue building the same project introduced in earlier modules.
+
+## Student Management System
+
+Instead of creating a new application in every chapter, we will continuously enhance one enterprise application.
 
 ```
 Student Management System
-```
-
-Instead of using unrelated examples in every chapter, we'll continue improving one enterprise application.
-
-Packages:
-
-```
-com.techvidyalaya.student
-
-├── controller
-├── service
-├── repository
-├── entity
-├── config
-└── application
-```
-
-Classes:
-
-```
-StudentController
 
 ↓
 
-StudentService
+Spring Core
 
 ↓
 
-StudentRepository
+Spring Boot
 
 ↓
 
-Student
+REST APIs
+
+↓
+
+Database
+
+↓
+
+Security
+
+↓
+
+Microservices
+
+↓
+
+Cloud Deployment
 ```
 
-Every chapter extends this project.
+By the end of the course, you'll have a complete production-ready application.
 
 ---
 
 # Module Roadmap
 
 ```
-Spring Core
+Introduction to Spring Boot
 
 ↓
 
-IoC
+Why Spring Boot
 
 ↓
 
-IoC Container
+Spring Boot Architecture
 
 ↓
 
-BeanFactory
+@SpringBootApplication
 
 ↓
 
-ApplicationContext
+SpringApplication.run()
 
 ↓
 
-Beans
+Auto Configuration
 
 ↓
 
-Bean Lifecycle
+Starter Dependencies
 
 ↓
 
-Dependency Injection
+Embedded Servers
 
 ↓
 
-Constructor Injection
+Configuration Files
 
 ↓
 
-Setter Injection
+External Configuration
 
 ↓
 
-Component Scanning
+Logging
 
 ↓
 
-Stereotype Annotations
+Profiles
 
 ↓
 
-Bean Scopes
+Actuator
 
 ↓
 
-Java Configuration
+Developer Tools
 
 ↓
 
-Profiles & Environment
+Production Applications
 ```
 
-By the end of the module you'll understand the complete bean lifecycle.
+Each chapter builds upon the previous one.
+
+Do not skip chapters.
 
 ---
 
@@ -222,216 +231,211 @@ By the end of the module you'll understand the complete bean lifecycle.
 
 ## Chapter 1
 
-### Spring Core Architecture
+### Introduction to Spring Boot
 
 Learn:
 
-- What Spring Core is
-- Spring Container
-- IoC
-- Architecture
-- Bean Definitions
+- What is Spring Boot?
+- History
+- Goals
+- Features
+- Convention over Configuration
+- Opinionated Defaults
 
 ---
 
 ## Chapter 2
 
-### Inversion of Control (IoC)
+### Why Spring Boot Was Created
 
 Learn:
 
-- Traditional Java
-- Tight Coupling
-- IoC
-- Control inversion
-- Real-world analogy
+- Enterprise development before Spring Boot
+- XML configuration
+- Dependency management
+- Manual server deployment
+- Challenges of traditional Spring applications
 
 ---
 
 ## Chapter 3
 
-### Spring IoC Container
+### Spring Boot Architecture
 
 Learn:
 
-- Bean creation
-- Bean registry
-- Startup flow
-- ApplicationContext creation
+- High-level architecture
+- Boot startup sequence
+- Internal components
+- Relationship with Spring Framework
 
 ---
 
 ## Chapter 4
 
-### BeanFactory
+### Understanding @SpringBootApplication
 
 Learn:
 
-- Lazy initialization
-- getBean()
-- Memory usage
-- Performance
+- Meta-annotations
+- @Configuration
+- @EnableAutoConfiguration
+- @ComponentScan
+- How Spring Boot discovers your application
 
 ---
 
 ## Chapter 5
 
-### ApplicationContext
+### SpringApplication.run()
 
 Learn:
 
-- Enterprise container
-- Events
-- Resource loading
-- Environment
-- MessageSource
+- Startup lifecycle
+- Environment creation
+- ApplicationContext initialization
+- Bean creation
+- Embedded server startup
 
 ---
 
 ## Chapter 6
 
-### Spring Beans
+### Auto Configuration
 
 Learn:
 
-- What is a Bean?
-- Bean registration
-- Bean naming
-- Bean metadata
+- Conditional configuration
+- AutoConfiguration classes
+- @Conditional annotations
+- Internal working
+- Debugging auto configuration
 
 ---
 
 ## Chapter 7
 
-### Bean Lifecycle
+### Starter Dependencies
 
 Learn:
 
-- Bean creation
-- Dependency injection
-- Initialization
-- PostConstruct
-- PreDestroy
-- BeanPostProcessor
+- Spring Boot Starters
+- Dependency management
+- BOM (Bill of Materials)
+- Maven simplification
 
 ---
 
 ## Chapter 8
 
-### Dependency Injection
+### Embedded Web Servers
 
 Learn:
 
-- Constructor Injection
-- Setter Injection
-- Field Injection
-- Loose coupling
+- Embedded Tomcat
+- Jetty
+- Undertow
+- Server startup
+- Request lifecycle
 
 ---
 
 ## Chapter 9
 
-### Constructor Injection
+### Configuration Files
 
 Learn:
 
+- application.properties
+- application.yml
+- Configuration hierarchy
 - Best practices
-- Immutability
-- Circular dependency
-- Testing
-- Optional dependencies
 
 ---
 
 ## Chapter 10
 
-### Setter Injection & Field Injection
+### External Configuration
 
 Learn:
 
-- Optional dependencies
-- Reflection
-- Field injection drawbacks
-- Design review
+- Environment variables
+- Command-line arguments
+- Property precedence
+- Secure configuration
 
 ---
 
 ## Chapter 11
 
-### Component Scanning
+### Logging
 
 Learn:
 
-- @ComponentScan
-- Package scanning
-- BeanDefinition creation
-- Internal scanners
+- SLF4J
+- Logback
+- Logging levels
+- Production logging
+- Log configuration
 
 ---
 
 ## Chapter 12
 
-### Stereotype Annotations
+### Spring Boot Profiles
 
 Learn:
 
-- @Component
-- @Service
-- @Repository
-- @Controller
-- @RestController
-- @Configuration
+- Environment-specific configuration
+- Multiple profiles
+- Profile activation
+- Real-world deployments
 
 ---
 
 ## Chapter 13
 
-### Bean Scopes
+### Spring Boot Actuator
 
 Learn:
 
-- Singleton
-- Prototype
-- Request
-- Session
-- Application
-- WebSocket
+- Health endpoints
+- Metrics
+- Monitoring
+- Production diagnostics
 
 ---
 
 ## Chapter 14
 
-### Java Configuration
+### Developer Tools
 
 Learn:
 
-- @Configuration
-- @Bean
-- Third-party libraries
-- Full vs Lite configuration
-- proxyBeanMethods
+- Spring Boot DevTools
+- Live reload
+- Automatic restart
+- Faster development
 
 ---
 
 ## Chapter 15
 
-### Profiles & Environment
+### Building Production Applications
 
 Learn:
 
-- application.properties
-- YAML
-- @Value
-- @ConfigurationProperties
-- Profiles
-- Secrets
-- Environment
+- Packaging
+- Executable JARs
+- Deployment
+- Production best practices
+- Common mistakes
 
 ---
 
-# Teaching Approach
+# Teaching Methodology
 
-Every chapter follows the same structure.
+Every chapter follows the same learning pattern.
 
 ```
 Learning Objectives
@@ -458,15 +462,19 @@ Internal Working
 
 ↓
 
-Memory Representation
-
-↓
-
 Execution Flow
 
 ↓
 
-Code Example
+Memory Representation
+
+↓
+
+Code Walkthrough
+
+↓
+
+How Spring Boot Thinks
 
 ↓
 
@@ -474,15 +482,15 @@ Behind the Scenes
 
 ↓
 
-Industry Insight
-
-↓
-
 Debugging Corner
 
 ↓
 
-Interview Questions
+Industry Insight
+
+↓
+
+Interview Corner
 
 ↓
 
@@ -505,7 +513,7 @@ Quiz
 Summary
 ```
 
-This consistency makes learning easier and helps reinforce concepts.
+This consistent approach helps you understand concepts deeply rather than memorizing APIs.
 
 ---
 
@@ -513,95 +521,96 @@ This consistency makes learning easier and helps reinforce concepts.
 
 After completing this module, you'll be able to:
 
-✅ Explain Spring Core Architecture
+✅ Explain Spring Boot Architecture
 
-✅ Explain IoC
+✅ Build Spring Boot applications from scratch
 
-✅ Explain Dependency Injection
+✅ Understand Auto Configuration
 
-✅ Build loosely coupled applications
+✅ Manage dependencies efficiently
 
-✅ Design Spring Beans
+✅ Configure applications for multiple environments
 
-✅ Configure Spring applications
+✅ Debug startup problems
 
-✅ Debug bean creation problems
+✅ Use embedded servers
 
-✅ Use different bean scopes
+✅ Build production-ready applications
 
-✅ Manage environments
-
-✅ Configure production-ready applications
+✅ Understand Spring Boot internals
 
 ---
 
 # Industry Relevance
 
-Every enterprise Spring Boot application relies on these concepts.
+Spring Boot powers thousands of enterprise applications worldwide, including:
 
-Examples include:
-
-- Banking Applications
+- Banking Systems
 - E-Commerce Platforms
-- Healthcare Systems
-- ERP Applications
-- AI Platforms
-- SaaS Products
+- Healthcare Applications
 - Government Portals
+- SaaS Products
+- AI Platforms
+- Cloud-Native Applications
+- Enterprise APIs
 
-If you master this module, you'll understand the foundation of nearly every Spring Boot project you'll encounter in your career.
+Mastering Spring Boot is one of the most valuable skills for Java developers.
 
 ---
 
-# Recommended Learning Order
+# Recommended Learning Strategy
 
-For the best understanding:
+For each chapter:
 
-1. Read the chapter.
-2. Study every diagram.
-3. Type the code yourself.
-4. Complete the lab.
+1. Read the theory.
+2. Study every architecture diagram.
+3. Type the code manually.
+4. Complete the hands-on lab.
 5. Answer the interview questions.
 6. Finish the mini challenge.
 7. Review the cheat sheet.
 8. Attempt the quiz.
-9. Build the running project.
+9. Integrate the concept into the running project.
 
-Avoid skipping chapters, as each one builds directly on the previous concepts.
+Avoid copying and pasting code.
+
+Understanding is more valuable than completion.
 
 ---
 
 # Expected Outcomes
 
-After completing Module 2, you will no longer see Spring as a "magic framework."
+By the end of Module 3, you will understand:
 
-Instead, you'll understand:
+- How Spring Boot starts an application.
+- How Auto Configuration works.
+- How dependencies are managed.
+- How embedded servers are launched.
+- How configuration is loaded.
+- How production-ready applications are built.
 
-- how it discovers components,
-- how it creates beans,
-- how dependencies are resolved,
-- how scopes affect object lifetime,
-- how configuration is processed,
-- and how the application becomes ready to serve requests.
+You will no longer think of Spring Boot as a black box.
 
-These concepts form the foundation for everything you'll learn in Spring Boot, Spring MVC, Spring Data JPA, Spring Security, Spring Cloud, and beyond.
+Instead, you'll understand the architecture that makes modern Spring development fast, reliable, and scalable.
 
 ---
 
 # Next Module
 
-➡ **Module 3 – Spring Boot Fundamentals**
+➡ **Module 4 – Spring MVC & Web Development**
 
-You'll explore:
+You'll learn:
 
-- Spring Boot Architecture
-- Auto Configuration
-- Starter Dependencies
-- Embedded Tomcat
-- Spring Boot Internals
-- Spring Boot Actuator
-- Building Production REST APIs
+- HTTP Request Lifecycle
+- DispatcherServlet
+- Controllers
+- Request Mapping
+- Model & View
+- REST Controllers
+- Exception Handling
+- Validation
+- Building Web Applications
 
 ---
 
-> **"Once you understand Spring Core, you're no longer memorizing annotations—you understand the engine that powers the entire Spring ecosystem."**
+> **"Spring Core taught you how the engine works. Spring Boot teaches you how that engine is assembled automatically. Once you understand both, you'll build applications with confidence instead of relying on framework magic."**
